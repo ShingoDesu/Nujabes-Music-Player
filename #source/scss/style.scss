@@ -1,0 +1,204 @@
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+*,*:before,*:after{
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+:focus,:active{outline: none;}
+a:focus,a:active{outline: none;}
+
+nav,footer,header,aside{display: block;}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	font-size: 100%;
+	line-height: 1;
+	font-size: 14px;
+	-ms-text-size-adjust: 100%;
+	-moz-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+}
+input,button,textarea{font-family:inherit;}
+
+input::-ms-clear{display: none;}
+button{cursor: pointer;}
+button::-moz-focus-inner {padding:0;border:0;}
+a, a:visited{text-decoration: none;}
+a:hover{text-decoration: none;}
+ul li{list-style: none;}
+img{vertical-align: top;}
+
+h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Rajdhani:wght@300&display=swap');
+/*--------------------*/
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Rajdhani';
+	background: url(/img/background1.jpg);
+	background-position: 0 0;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.music-player {
+	width: 350px;
+	height: 550px;
+	border-radius: 20px;
+	background: #e7af62;
+	padding: 30px;
+	overflow: hidden;
+	color: rgb(12, 56, 6);
+	.artist-name,
+	.song-name {
+		text-align: center;
+		text-transform: capitalize;
+	}
+	.song-name {
+		font-size: 40px;
+		font-weight: 500;
+		margin-bottom: 10px;
+	}
+	.artist-name {
+		font-size: 20px;
+	}
+	.cover-image {
+		position: relative;
+		display: block;
+		margin: 40px auto;
+		width: 180px;
+		height: 180px;
+		border-radius: 50%;
+		background: #dbcdbb;
+		background-image: url(/img/cover1.png);
+		background-size: cover;
+		box-shadow: 0 0 0 10px #e9a74b;
+		animation: rotate 20s linear infinite;
+		animation-play-state: paused;
+		&::before {
+			content: '';
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background: #e9a74b;
+		}
+		
+	}
+
+	.cover-image.play {
+		animation-play-state: running;
+	}
+	.song-slider {
+		width: 100%;
+		position: relative;
+		.seek-bar {
+			-webkit-appearance: none;
+			width: 100%;
+			height: 5px;
+			border-radius: 10px;
+			background: #ffdaa6;
+			overflow: hidden;
+			cursor: pointer;
+			&::-webkit-slider-thumb {
+				-webkit-appearance: none;
+				width: 1px;
+				height: 20px;
+				background: #9f5d00;
+				box-shadow: -400px 0 0 400px #9f5d00;
+			}
+		}
+		.current-time,
+		.song-duration {
+			font-size: 15px;
+		}
+		.song-duration {
+			position: absolute;
+			right: 0;
+		}
+	}
+	.control {
+		width: 60%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin: auto;
+		margin-top: 40px;
+		.play-btn {
+			position: relative;
+			width: 60px;
+			height: 60px;
+			border-radius: 50%;
+			background: #eb9e32;
+			cursor: pointer;
+			border: none;
+			span {
+				position: absolute;
+				top: 50%;
+				left: 25%;
+				transform: translateY(-50%);
+				width: 10px;
+				height: 30px;
+				border-radius: 2px;
+				background: #5f7a61;
+				transition: .5s;
+				clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+				&:nth-child(2) {
+					left: 58%;
+					transform-origin: center;
+				}
+			}
+		}
+		.play-btn.pause {
+				span {
+					&:nth-child(2) {
+						transform: translateY(-50%) scaleY(0);
+					}
+					&:nth-child(1) {
+						width: 35%;
+						height: 53%;
+						transform: translate(39%, -47%);
+						border-radius: 0;
+						clip-path: polygon(0 0, 100% 51%, 100% 51%, 0 100%);
+					}
+				}
+		}
+		.btn {
+			width: 40px;
+			height: 40px;
+			background: #eb9e32;
+			border-radius: 50%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+}
+
+@keyframes rotate{
+	0%{
+		transform: rotate(0);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
+
